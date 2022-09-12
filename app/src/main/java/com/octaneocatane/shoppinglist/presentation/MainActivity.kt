@@ -1,16 +1,18 @@
 package com.octaneocatane.shoppinglist.presentation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaneocatane.shoppinglist.R
+import com.octaneocatane.shoppinglist.databinding.ActivityMainBinding
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var viewModel: MainViewModel
     private var count = 0
     private lateinit var shopListAdapter: ShopListAdapter
@@ -21,16 +23,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupRecyclerView()
 
-        //проинициализируем нашу модель
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        //подпишемся на обновления
         viewModel.shopList.observe(this) {
             shopListAdapter.submitList(it)
         }
 
+        val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
+        buttonAddItem.setOnClickListener {
+            val intent = ShopItemActivity.newIntentAddItem(this)
+            startActivity(intent)
+        }
     }
-
 
     private fun setupRecyclerView() {
         val rvShopList = findViewById<RecyclerView>(R.id.rv_shop_list)
@@ -75,16 +79,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         shopListAdapter.onShopItemClickListener = {
-            Log.d("OnClickData", it.id.toString())
+            val intent = ShopItemActivity.newIntentEditItem(this, it.id)
+            startActivity(intent)
         }
     }
 
     private fun setupLongClickListener() {
         shopListAdapter.onShopItemLongClickListener = {
             viewModel.changeEnableState(it)
+            Log.d("err", "${it.id}")
         }
     }
-
 
 }
 

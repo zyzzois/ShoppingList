@@ -2,6 +2,7 @@ package com.octaneocatane.shoppinglist.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
