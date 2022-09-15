@@ -1,9 +1,12 @@
 package com.octaneocatane.shoppinglist.presentation
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.constraintlayout.widget.Guideline
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -12,28 +15,53 @@ import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.databinding.ActivityMainBinding
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener{
     private lateinit var viewModel: MainViewModel
-    private var count = 0
     private lateinit var shopListAdapter: ShopListAdapter
+    private var shopItemContainer: FragmentContainerView? = null
+
+    //lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val item = ShopItem("name 0", 0, true, 0)
         setContentView(R.layout.activity_main)
-        setupRecyclerView()
 
+        val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
+        val guidLine = findViewById<Guideline>(R.id.guideline_middle)
+        val rvXML = findViewById<RecyclerView>(R.id.rv_shop_list)
+
+        shopItemContainer = findViewById(R.id.shop_item_container)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.action_bar_layout)
+
+        setupRecyclerView()
 
         viewModel.shopList.observe(this) {
             shopListAdapter.submitList(it)
         }
 
-        val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
         buttonAddItem.setOnClickListener {
-            val intent = ShopItemActivity.newIntentAddItem(this)
-            startActivity(intent)
+            if (isOnePaneMode()) {
+                val intent = ShopItemActivity.newIntentAddItem(this)
+                startActivity(intent)
+            } else {
+
+                launchFragment(ShopItemFragment.newInstanceAddItem())
+            }
         }
+    }
+
+    private fun isOnePaneMode(): Boolean {
+        return shopItemContainer == null
+    }
+
+    private fun launchFragment(fragment: Fragment) {
+        supportFragmentManager.popBackStack() //popBackStack() удалит из бэкстэка один фрагмент, а если его там нет, то он ничего делать не будет
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.shop_item_container, fragment)
+            .addToBackStack(null) //добавили в BackStack для того чтобы можно было закрывать фрагмент по кнопке назад
+            .commit()
     }
 
     private fun setupRecyclerView() {
@@ -79,16 +107,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         shopListAdapter.onShopItemClickListener = {
-            val intent = ShopItemActivity.newIntentEditItem(this, it.id)
-            startActivity(intent)
+            if (isOnePaneMode()) {
+                val intent = ShopItemActivity.newIntentEditItem(this, it.id)
+                startActivity(intent)
+            } else {
+                launchFragment(ShopItemFragment.newInstanceEditItem(it.id))
+            }
         }
     }
 
     private fun setupLongClickListener() {
         shopListAdapter.onShopItemLongClickListener = {
             viewModel.changeEnableState(it)
-            Log.d("err", "${it.id}")
         }
+    }
+
+    override fun onEditingFinishedListener() {
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+        supportFragmentManager.popBackStack()
     }
 
 }
