@@ -6,6 +6,7 @@ import com.octaneocatane.shoppinglist.domain.ShopItem
 import com.octaneocatane.shoppinglist.domain.ShopListRepository
 import java.lang.RuntimeException
 import kotlin.concurrent.fixedRateTimer
+import kotlin.random.Random
 
 class ShopListRepositoryImpl: ShopListRepository {
     private val shopList = mutableListOf<ShopItem>()
@@ -13,8 +14,8 @@ class ShopListRepositoryImpl: ShopListRepository {
     private var autoIncrementId = 0
 
     init {
-        for (i in 0 until 10) {
-            val item = ShopItem("name $i", i, true)
+        for (i in 0 until 25) {
+            val item = ShopItem("name $i", i, Random.nextBoolean())
             addShopItem(item)
         }
     }
