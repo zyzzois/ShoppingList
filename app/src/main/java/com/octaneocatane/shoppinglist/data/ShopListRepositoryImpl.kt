@@ -5,12 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import com.octaneocatane.shoppinglist.domain.ShopItem
 import com.octaneocatane.shoppinglist.domain.ShopListRepository
 import java.lang.RuntimeException
-import kotlin.concurrent.fixedRateTimer
 import kotlin.random.Random
 
-class ShopListRepositoryImpl: ShopListRepository {
-    private val shopList = mutableListOf<ShopItem>()
+object ShopListRepositoryImpl: ShopListRepository {
     private val shopListLiveData = MutableLiveData<List<ShopItem>>()
+    private val shopList = sortedSetOf<ShopItem>({ o1, o2 -> o1.id.compareTo(o2.id) })
     private var autoIncrementId = 0
 
     init {
