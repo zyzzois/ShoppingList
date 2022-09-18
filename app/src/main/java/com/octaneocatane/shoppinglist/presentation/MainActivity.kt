@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaneocatane.shoppinglist.R
-import com.octaneocatane.shoppinglist.databinding.ActivityMainBinding
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val item = ShopItem("name 0", 0, true, 0)
         setContentView(R.layout.activity_main)
         setupRecyclerView()
 
