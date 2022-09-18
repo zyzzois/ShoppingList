@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.octaneocatane.shoppinglist.domain.ShopItem
 import com.octaneocatane.shoppinglist.domain.ShopListRepository
 import java.lang.RuntimeException
-import kotlin.concurrent.fixedRateTimer
 import kotlin.random.Random
 
 object ShopListRepositoryImpl: ShopListRepository {
