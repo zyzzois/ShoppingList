@@ -12,23 +12,20 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaneocatane.shoppinglist.R
-import com.octaneocatane.shoppinglist.databinding.ActivityMainBinding
-import com.octaneocatane.shoppinglist.domain.ShopItem
+
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener{
     private lateinit var viewModel: MainViewModel
     private lateinit var shopListAdapter: ShopListAdapter
     private var shopItemContainer: FragmentContainerView? = null
 
-    //lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
-        val guidLine = findViewById<Guideline>(R.id.guideline_middle)
-        val rvXML = findViewById<RecyclerView>(R.id.rv_shop_list)
 
         shopItemContainer = findViewById(R.id.shop_item_container)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]

@@ -2,18 +2,9 @@ package com.octaneocatane.shoppinglist.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.octaneocatane.shoppinglist.R
-import com.octaneocatane.shoppinglist.databinding.ActivityShopItemBinding
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
 class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {

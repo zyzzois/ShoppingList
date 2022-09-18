@@ -1,6 +1,6 @@
 package com.octaneocatane.shoppinglist.presentation
 
-import androidx.lifecycle.MutableLiveData
+
 import androidx.lifecycle.ViewModel
 import com.octaneocatane.shoppinglist.data.ShopListRepositoryImpl
 import com.octaneocatane.shoppinglist.domain.DeleteShopItemUseCase
