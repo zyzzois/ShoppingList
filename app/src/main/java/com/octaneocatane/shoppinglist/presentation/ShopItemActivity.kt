@@ -3,11 +3,11 @@ package com.octaneocatane.shoppinglist.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
 class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
-
     private var screenMode = MODE_UNKNOWN
     private var shopItemId = ShopItem.UNDEFINED_ID
 
@@ -70,7 +70,7 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinished
         }
     }
 
-    override fun onEditingFinishedListener() {
+    override fun onEditingFinished() {
         finish()
     }
 }
