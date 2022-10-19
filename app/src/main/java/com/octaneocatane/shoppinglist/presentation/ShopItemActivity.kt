@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.domain.ShopItem
-import androidx.appcompat.app.AppCompatActivity
 
 class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
     private var screenMode = MODE_UNKNOWN
