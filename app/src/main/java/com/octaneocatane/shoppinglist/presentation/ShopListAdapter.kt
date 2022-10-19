@@ -9,6 +9,7 @@ import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.databinding.ItemDisabledBinding
 import com.octaneocatane.shoppinglist.databinding.ItemEnabledBinding
 import com.octaneocatane.shoppinglist.domain.ShopItem
+import javax.inject.Inject
 
 class ShopListAdapter: androidx.recyclerview.widget.ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCallback()) {
 

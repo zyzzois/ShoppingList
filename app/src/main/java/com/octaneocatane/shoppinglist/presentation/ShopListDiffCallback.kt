@@ -2,8 +2,9 @@ package com.octaneocatane.shoppinglist.presentation
 
 import androidx.recyclerview.widget.DiffUtil
 import com.octaneocatane.shoppinglist.domain.ShopItem
+import javax.inject.Inject
 
-class ShopListDiffCallback(
+class ShopListDiffCallback @Inject constructor(
     private val oldList: List<ShopItem>,
     private val newList: List<ShopItem>,
 ): DiffUtil.Callback() {

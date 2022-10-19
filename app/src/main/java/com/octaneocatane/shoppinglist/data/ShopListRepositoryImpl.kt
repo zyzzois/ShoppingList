@@ -7,8 +7,9 @@ import androidx.lifecycle.Transformations
 import com.octaneocatane.shoppinglist.domain.ShopItem
 import com.octaneocatane.shoppinglist.domain.ShopListRepository
 import java.lang.RuntimeException
+import javax.inject.Inject
 
-class ShopListRepositoryImpl(application: Application): ShopListRepository {
+class ShopListRepositoryImpl @Inject constructor(application: Application): ShopListRepository {
 
     private val shopListDao = AppDataBase.getInstance(application).shopListDao()
 
