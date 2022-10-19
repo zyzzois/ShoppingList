@@ -6,9 +6,7 @@ import com.octaneocatane.shoppinglist.presentation.MainActivity
 import com.octaneocatane.shoppinglist.presentation.MainViewModel
 
 class GetShopListUseCase(private val shopListRepository: ShopListRepository) {
-
-    fun getShopList():  LiveData<List<ShopItem>> {
-
+    fun getShopList(): LiveData<List<ShopItem>> {
         return shopListRepository.getShopList()
     }
 }
