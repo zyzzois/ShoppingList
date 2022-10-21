@@ -20,6 +20,10 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinished
         }
     }
 
+    override fun onEditingFinished() {
+        finish()
+    }
+
     private fun launchRightMode() {
         val fragment = when (screenMode) {
             MODE_EDIT -> ShopItemFragment.newInstanceEditItem(shopItemId)
@@ -68,9 +72,5 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinished
             intent.putExtra(EXTRA_SHOP_ITEM_ID, shopItemId)
             return intent
         }
-    }
-
-    override fun onEditingFinished() {
-        finish()
     }
 }
