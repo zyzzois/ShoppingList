@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.octaneocatane.shoppinglist.databinding.FragmentShopItemBinding
 import com.octaneocatane.shoppinglist.domain.ShopItem
 
+
 class ShopItemFragment: Fragment() {
     private var _binding: FragmentShopItemBinding? = null
     private val binding: FragmentShopItemBinding
@@ -113,8 +114,6 @@ class ShopItemFragment: Fragment() {
         }
     }
 
-
-
     private fun parseParams() {
         val args = requireArguments()
         if (!args.containsKey(SCREEN_MODE)) {
@@ -168,3 +167,4 @@ class ShopItemFragment: Fragment() {
         }
     }
 }
+

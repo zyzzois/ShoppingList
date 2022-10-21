@@ -49,11 +49,11 @@ class ShopItemViewModel(application: Application) : AndroidViewModel(application
         val count = parseCount(inputCount)
         val fieldsValid = validateInput(name, count)
         if (fieldsValid) {
-            val shopItem = ShopItem(name, count, true)
             viewModelScope.launch {
+                val shopItem = ShopItem(name, count, true)
                 addShopItemUseCase.addShopItem(shopItem)
+                finishWork()
             }
-            finishWork()
         }
     }
 
