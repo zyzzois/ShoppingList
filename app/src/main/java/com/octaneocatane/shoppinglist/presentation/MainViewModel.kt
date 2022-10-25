@@ -2,16 +2,12 @@ package com.octaneocatane.shoppinglist.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.octaneocatane.shoppinglist.data.ShopListRepositoryImpl
-import com.octaneocatane.shoppinglist.domain.DeleteShopItemUseCase
-import com.octaneocatane.shoppinglist.domain.EditShopItemUseCase
-import com.octaneocatane.shoppinglist.domain.GetShopListUseCase
-import com.octaneocatane.shoppinglist.domain.ShopItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
+import com.octaneocatane.shoppinglist.data.repository.ShopListRepositoryImpl
+import com.octaneocatane.shoppinglist.domain.usecases.DeleteShopItemUseCase
+import com.octaneocatane.shoppinglist.domain.usecases.EditShopItemUseCase
+import com.octaneocatane.shoppinglist.domain.usecases.GetShopListUseCase
+import com.octaneocatane.shoppinglist.domain.ShopItemEntity
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
@@ -21,18 +17,18 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private val editShopItemUseCase = EditShopItemUseCase(repository)
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
 
-    val shopList = getShopListUseCase.getShopList()
+    val shopList = getShopListUseCase()
 
-    fun deleteShopItem(shopItem: ShopItem) {
+    fun deleteShopItem(shopItemEntity: ShopItemEntity) {
         viewModelScope.launch {
-            deleteShopItemUseCase.deleteShopItem(shopItem)
+            deleteShopItemUseCase(shopItemEntity)
         }
     }
 
-    fun changeEnableState(shopItem: ShopItem) {
-        val newItem = shopItem.copy(enabled = !shopItem.enabled)
+    fun changeEnableState(shopItemEntity: ShopItemEntity) {
+        val newItem = shopItemEntity.copy(enabled = !shopItemEntity.enabled)
         viewModelScope.launch {
-            editShopItemUseCase.editShopItem(newItem)
+            editShopItemUseCase(newItem)
         }
     }
 }

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.octaneocatane.shoppinglist.databinding.FragmentShopItemBinding
-import com.octaneocatane.shoppinglist.domain.ShopItem
+import com.octaneocatane.shoppinglist.domain.ShopItemEntity
 
 
 class ShopItemFragment: Fragment() {
@@ -22,7 +22,7 @@ class ShopItemFragment: Fragment() {
     private lateinit var onEditingFinishedListener: OnEditingFinishedListener
 
     private var screenMode: String = MODE_UNKNOWN
-    private var shopItemId: Int = ShopItem.UNDEFINED_ID
+    private var shopItemEntityId: Int = ShopItemEntity.UNDEFINED_ID
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -96,7 +96,7 @@ class ShopItemFragment: Fragment() {
     }
 
     private fun launchEditMode() {
-        viewModel.getShopItem(shopItemId)
+        viewModel.getShopItem(shopItemEntityId)
         binding.buttonSave.setOnClickListener {
             viewModel.editShopItem(
                 binding.editName.text?.toString(),
@@ -128,7 +128,7 @@ class ShopItemFragment: Fragment() {
             if (!args.containsKey(SHOP_ITEM_ID)) {
                 throw RuntimeException("Param shop item id is absent")
             }
-            shopItemId = args.getInt(SHOP_ITEM_ID, ShopItem.UNDEFINED_ID)
+            shopItemEntityId = args.getInt(SHOP_ITEM_ID, ShopItemEntity.UNDEFINED_ID)
         }
     }
 

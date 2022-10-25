@@ -1,11 +1,11 @@
 package com.octaneocatane.shoppinglist.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import com.octaneocatane.shoppinglist.domain.ShopItem
+import com.octaneocatane.shoppinglist.domain.ShopItemEntity
 
 class ShopListDiffCallback(
-    private val oldList: List<ShopItem>,
-    private val newList: List<ShopItem>,
+    private val oldList: List<ShopItemEntity>,
+    private val newList: List<ShopItemEntity>,
 ): DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
