@@ -32,7 +32,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_name"
-                android:text="@{viewModel.shopItem.name}"
+                android:text="@{viewModel.shopItemEntity.name}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
@@ -57,7 +57,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_count"
-                android:text="@{String.valueOf(viewModel.shopItem.count)}"
+                android:text="@{String.valueOf(viewModel.shopItemEntity.count)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/count"

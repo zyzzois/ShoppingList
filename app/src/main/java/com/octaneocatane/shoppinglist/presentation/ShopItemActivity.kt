@@ -5,11 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.octaneocatane.shoppinglist.R
-import com.octaneocatane.shoppinglist.domain.ShopItem
+import com.octaneocatane.shoppinglist.domain.ShopItemEntity
 
 class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
     private var screenMode = MODE_UNKNOWN
-    private var shopItemId = ShopItem.UNDEFINED_ID
+    private var shopItemEntityId = ShopItemEntity.UNDEFINED_ID
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinished
 
     private fun launchRightMode() {
         val fragment = when (screenMode) {
-            MODE_EDIT -> ShopItemFragment.newInstanceEditItem(shopItemId)
+            MODE_EDIT -> ShopItemFragment.newInstanceEditItem(shopItemEntityId)
             MODE_ADD  -> ShopItemFragment.newInstanceAddItem()
             else      -> throw RuntimeException("Unknown screen mode $screenMode")
         }
@@ -48,7 +48,7 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinished
             if (!intent.hasExtra(EXTRA_SHOP_ITEM_ID)) {
                 throw RuntimeException("Param shop item id is absent")
             }
-            shopItemId = intent.getIntExtra(EXTRA_SHOP_ITEM_ID, ShopItem.UNDEFINED_ID)
+            shopItemEntityId = intent.getIntExtra(EXTRA_SHOP_ITEM_ID, ShopItemEntity.UNDEFINED_ID)
         }
     }
 

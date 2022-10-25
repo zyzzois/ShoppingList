@@ -1,4 +1,4 @@
-package com.octaneocatane.shoppinglist.data
+package com.octaneocatane.shoppinglist.data.database
 
 import android.app.Application
 import androidx.room.Database

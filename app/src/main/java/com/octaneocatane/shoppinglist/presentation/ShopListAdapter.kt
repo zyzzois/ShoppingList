@@ -4,16 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.RecyclerView
 import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.databinding.ItemDisabledBinding
 import com.octaneocatane.shoppinglist.databinding.ItemEnabledBinding
-import com.octaneocatane.shoppinglist.domain.ShopItem
+import com.octaneocatane.shoppinglist.domain.ShopItemEntity
 
-class ShopListAdapter: androidx.recyclerview.widget.ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCallback()) {
+class ShopListAdapter: androidx.recyclerview.widget.ListAdapter<ShopItemEntity, ShopItemViewHolder>(ShopItemDiffCallback()) {
 
-    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
-    var onShopItemClickListener: ((ShopItem) -> Unit)? = null
+    var onShopItemLongClickListener: ((ShopItemEntity) -> Unit)? = null
+    var onShopItemClickListener: ((ShopItemEntity) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
 

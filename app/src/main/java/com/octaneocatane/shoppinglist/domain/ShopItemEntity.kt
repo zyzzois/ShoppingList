@@ -1,6 +1,6 @@
 package com.octaneocatane.shoppinglist.domain
 
-data class ShopItem(
+data class ShopItemEntity(
     val name: String,
     val count: Int,
     val enabled: Boolean,
