@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaneocatane.shoppinglist.R
 import com.octaneocatane.shoppinglist.databinding.ActivityMainBinding
+import com.octaneocatane.shoppinglist.presentation.recyclerview.ShopListAdapter
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener{
 

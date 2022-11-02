@@ -1,4 +1,4 @@
-package com.octaneocatane.shoppinglist.presentation
+package com.octaneocatane.shoppinglist.presentation.recyclerview
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
