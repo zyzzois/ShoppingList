@@ -1,4 +1,4 @@
-package com.octaneocatane.shoppinglist.presentation
+package com.octaneocatane.shoppinglist.presentation.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,8 @@ import com.octaneocatane.shoppinglist.databinding.ItemDisabledBinding
 import com.octaneocatane.shoppinglist.databinding.ItemEnabledBinding
 import com.octaneocatane.shoppinglist.domain.ShopItemEntity
 
-class ShopListAdapter: androidx.recyclerview.widget.ListAdapter<ShopItemEntity, ShopItemViewHolder>(ShopItemDiffCallback()) {
+class ShopListAdapter: androidx.recyclerview.widget.ListAdapter<ShopItemEntity, ShopItemViewHolder>(
+    ShopItemDiffCallback()) {
 
     var onShopItemLongClickListener: ((ShopItemEntity) -> Unit)? = null
     var onShopItemClickListener: ((ShopItemEntity) -> Unit)? = null

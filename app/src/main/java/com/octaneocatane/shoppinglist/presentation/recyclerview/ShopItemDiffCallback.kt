@@ -1,4 +1,4 @@
-package com.octaneocatane.shoppinglist.presentation
+package com.octaneocatane.shoppinglist.presentation.recyclerview
 
 import androidx.recyclerview.widget.DiffUtil
 import com.octaneocatane.shoppinglist.domain.ShopItemEntity
