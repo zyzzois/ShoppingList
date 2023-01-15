@@ -27,6 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:authorities="com.octaneocatane.shoppinglist"
+            android:name="com.octaneocatane.data.provider.ShopListProvider"
+            android:exported="true">
+        </provider>
+
     </application>
 
 </manifest>
